@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#090a12"><title>Mortal Kombat: Kombat Crush</title>
+<style>
+:root{color-scheme:dark;--bg:#090a12;--line:#2d3045;--gold:#ffc75e;--text:#f7f7ff;--muted:#aeb3c8}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -20%,#48202b 0,transparent 46%),radial-gradient(ellipse at 100% 70%,#102d43 0,transparent 38%),var(--bg);font-family:Tahoma,Arial,sans-serif;color:var(--text)}.wrap{max-width:850px;margin:auto;padding:16px 12px 32px}header{text-align:center;padding:10px 8px 18px}.kicker{font-size:.75rem;letter-spacing:3px;color:var(--gold)}h1{font-size:clamp(1.7rem,6vw,2.7rem);margin:6px 0;line-height:1.35;text-shadow:0 0 22px #ef454866}.sub{color:var(--muted);font-size:.92rem;margin:0}.top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin:0 auto 14px}.stat{background:#141624dd;border:1px solid var(--line);border-radius:13px;padding:9px;text-align:center}.stat small{display:block;color:var(--muted);font-size:.72rem}.stat b{font-size:1.18rem}.gamebox{background:linear-gradient(145deg,#161827f2,#0d0f18f5);border:1px solid #383b52;border-radius:20px;padding:12px;box-shadow:0 18px 55px #0008}.board{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px;touch-action:manipulation;user-select:none}.tile{aspect-ratio:1/1;min-width:0;padding:2px;border:1px solid #ffffff12;border-radius:11px;background:linear-gradient(145deg,#24283b,#171a29);display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer;transition:transform .12s,border-color .12s,opacity .15s;box-shadow:inset 0 1px 0 #ffffff0c}.tile:active{transform:scale(.93)}.tile.selected{border:2px solid #fff;box-shadow:0 0 0 2px #ffc75e66,0 0 15px #ffc75e77;transform:scale(.94)}.tile.matched{animation:pop .2s ease-out;opacity:.2;transform:scale(.7)}.tile svg{width:100%;height:100%;filter:drop-shadow(0 3px 3px #0008)}@keyframes pop{to{transform:scale(.4);opacity:0}}.controls{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:13px}button.action{border:1px solid #41445a;background:#25283a;color:#fff;border-radius:11px;padding:11px 15px;font:inherit;font-weight:bold;cursor:pointer}button.primary{background:linear-gradient(135deg,#e94b42,#a82534);border-color:#f56b60}.status{text-align:center;color:#d9dbee;font-size:.9rem;min-height:28px;padding:10px 0 0}.rules{margin-top:14px;background:#121420;border:1px solid var(--line);border-radius:16px;padding:15px 17px}.rules h2{font-size:1rem;margin:0 0 7px;color:var(--gold)}.rules p{font-size:.86rem;color:var(--muted);margin:0;line-height:1.9}.legend{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:11px;color:var(--muted);font-size:.78rem}.legend span{display:flex;align-items:center;gap:5px}.legend svg{width:22px;height:22px}footer{text-align:center;color:#777e98;font-size:.72rem;margin-top:17px}@media(min-width:600px){.wrap{padding-top:24px}.gamebox{padding:18px}.board{gap:7px}.tile{border-radius:13px}.top{max-width:590px}}@media(max-width:370px){.wrap{padding-inline:7px}.gamebox{padding:7px}.board{gap:3px}.tile{border-radius:7px}.stat{padding:7px 3px}.stat b{font-size:1rem}}
+</style></head><body><main class="wrap">
+<header><div class="kicker">MORTAL KOMBAT • MATCH 3</div><h1>⚔ KOMBAT CRUSH ⚔</h1><p class="sub">سه چهره یا نشان یکسان را کنار هم بچین و امتیاز بگیر!</p></header>
+<div class="top"><div class="stat"><small>امتیاز</small><b id="score">0</b></div><div class="stat"><small>حرکت‌ها</small><b id="moves">30</b></div><div class="stat"><small>رکورد این دور</small><b id="best">0</b></div></div>
+<div class="gamebox"><div id="board" class="board" role="grid" aria-label="صفحه بازی جورچینی مورتال کمبت"></div>
+<div class="legend"><span><svg viewBox="0 0 100 100"><use href="#subzero"/></svg>ساب‌زیرو</span><span><svg viewBox="0 0 100 100"><use href="#scorpion"/></svg>اسکورپیون</span><span><svg viewBox="0 0 100 100"><use href="#dragon"/></svg>نشان اژدها</span></div>
+<div class="controls"><button class="action primary" id="newGame">شروع دوباره</button><button class="action" id="hint">راهنمای حرکت</button></div><div class="status" id="status" aria-live="polite">دو مهره کنار هم را انتخاب کن تا جایشان عوض شود.</div></div>
+<div class="rules"><h2>🎮 روش بازی</h2><p>دو مهره‌ی مجاور را لمس کن. اگر با جابه‌جایی، سه چهره یا نشان هم‌شکل یا بیشتر ردیف شوند، حذف می‌شوند و مهره‌های بالا پایین می‌ریزند. هر ترکیب امتیاز می‌دهد؛ قبل از تمام شدن ۳۰ حرکت رکورد بزن!</p></div><footer>نسخه وب طرفداری • Kombat Crush • قابل بازی با لمس و ماوس</footer></main>
+<!-- Original vector portraits and dragon emblem, drawn for this game -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<linearGradient id="ice" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d5fbff"/><stop offset=".48" stop-color="#48c9f5"/><stop offset="1" stop-color="#124f91"/></linearGradient>
+<linearGradient id="fire" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff1ae"/><stop offset=".45" stop-color="#f5a52a"/><stop offset="1" stop-color="#a93419"/></linearGradient>
+<linearGradient id="dragonGold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe9a2"/><stop offset=".5" stop-color="#d79a34"/><stop offset="1" stop-color="#713b16"/></linearGradient>
+<g id="subzero">
+ <path d="M50 3 79 15 94 39 84 72 62 94 38 94 16 72 6 39 21 15Z" fill="#071c35" stroke="#64dfff" stroke-width="4"/>
+ <path d="M25 24 50 15 75 24 81 47 70 73 50 85 30 73 19 47Z" fill="url(#ice)" stroke="#d9fbff" stroke-width="2"/>
+ <path d="M21 37 42 32 48 42 36 48 23 45ZM79 37 58 32 52 42 64 48 77 45Z" fill="#0a233c" stroke="#b6f3ff" stroke-width="2"/>
+ <path d="M27 54 73 54 68 70 50 79 32 70Z" fill="#09223b" stroke="#b6f3ff" stroke-width="2"/>
+ <path d="M37 60 63 60 57 65 43 65Z" fill="#e1ffff"/>
+ <path d="M24 25 34 14 45 17 40 25ZM76 25 66 14 55 17 60 25Z" fill="#e1ffff"/>
+ <path d="M12 39 5 29 9 53 20 58M88 39 95 29 91 53 80 58" fill="#43c9f6" stroke="#d6fbff" stroke-width="2"/>
+</g>
+<g id="scorpion">
+ <path d="M50 3 79 15 94 39 84 72 62 94 38 94 16 72 6 39 21 15Z" fill="#36130f" stroke="#ffb64c" stroke-width="4"/>
+ <path d="M25 24 50 15 75 24 81 47 70 73 50 85 30 73 19 47Z" fill="url(#fire)" stroke="#ffe9a5" stroke-width="2"/>
+ <path d="M21 37 42 32 48 42 36 48 23 45ZM79 37 58 32 52 42 64 48 77 45Z" fill="#3d160e" stroke="#ffdc80" stroke-width="2"/>
+ <path d="M27 54 73 54 68 70 50 79 32 70Z" fill="#45150e" stroke="#ffc85b" stroke-width="2"/>
+ <path d="M37 60 63 60 57 65 43 65Z" fill="#ffe8a0"/>
+ <path d="M24 25 34 14 45 17 40 25ZM76 25 66 14 55 17 60 25Z" fill="#fff0b0"/>
+ <path d="M12 39 5 29 9 53 20 58M88 39 95 29 91 53 80 58" fill="#e99a27" stroke="#ffe4a0" stroke-width="2"/>
+ <path d="M50 13 42 3 50 7 58 3Z" fill="#fff0b0"/>
+</g>
+<g id="dragon">
+ <circle cx="50" cy="50" r="46" fill="#1a1029" stroke="#d8ad55" stroke-width="4"/>
+ <circle cx="50" cy="50" r="39" fill="#301b37" stroke="#8e622e" stroke-width="1.5"/>
+ <!-- stylized curled dragon emblem -->
+ <path d="M70 20 52 15 37 19 24 31 20 44 25 55 37 59 47 53 48 45 41 42 36 47 32 43 37 34 47 29 61 30 57 38 66 43 77 37 82 25 74 29Z" fill="url(#dragonGold)" stroke="#fff0bd" stroke-width="2"/>
+ <path d="M32 59 23 70 35 81 50 84 65 76 73 63 65 57 57 67 47 72 39 69 47 62 44 56Z" fill="url(#dragonGold)" stroke="#fff0bd" stroke-width="2"/>
+ <path d="M58 47 71 49 78 57 71 61 64 56Z" fill="#e5b452"/>
+ <circle cx="51" cy="36" r="2.5" fill="#fff7d7"/>
+</g>
+</defs></svg>
+<script>
+const N=8,TYPES=3,boardEl=document.getElementById('board'),scoreEl=document.getElementById('score'),movesEl=document.getElementById('moves'),bestEl=document.getElementById('best'),statusEl=document.getElementById('status');let grid=[],selected=null,score=0,moves=30,busy=false,best=0;
+const icons=['<svg viewBox="0 0 100 100"><use href="#subzero"/></svg>','<svg viewBox="0 0 100 100"><use href="#scorpion"/></svg>','<svg viewBox="0 0 100 100"><use href="#dragon"/></svg>'];
+function rand(){return Math.floor(Math.random()*TYPES)}function makeGrid(){grid=Array.from({length:N},()=>Array(N).fill(0));for(let r=0;r<N;r++)for(let c=0;c<N;c++){let t;do{t=rand()}while((c>=2&&grid[r][c-1]===t&&grid[r][c-2]===t)||(r>=2&&grid[r-1][c]===t&&grid[r-2][c]===t));grid[r][c]=t}}
+function render(){boardEl.innerHTML='';for(let r=0;r<N;r++)for(let c=0;c<N;c++){const b=document.createElement('button');b.className='tile';b.type='button';b.setAttribute('role','gridcell');b.setAttribute('aria-label',`ردیف ${r+1} ستون ${c+1}`);b.innerHTML=icons[grid[r][c]];if(selected&&selected.r===r&&selected.c===c)b.classList.add('selected');b.addEventListener('click',()=>tap(r,c));boardEl.appendChild(b)}scoreEl.textContent=score;movesEl.textContent=moves;bestEl.textContent=best}
+function matches(){const set=new Set();for(let r=0;r<N;r++)for(let c=0;c<N;c++){const t=grid[r][c];let e=c+1;while(e<N&&grid[r][e]===t)e++;if(e-c>=3)for(let x=c;x<e;x++)set.add(r*N+x);let d=r+1;while(d<N&&grid[d][c]===t)d++;if(d-r>=3)for(let y=r;y<d;y++)set.add(y*N+c)}return set}
+function adjacent(a,b){return Math.abs(a.r-b.r)+Math.abs(a.c-b.c)===1}const sleep=ms=>new Promise(res=>setTimeout(res,ms));
+async function tap(r,c){if(busy||moves<=0)return;const p={r,c};if(!selected){selected=p;render();return}if(selected.r===r&&selected.c===c){selected=null;render();return}if(!adjacent(selected,p)){selected=p;render();return}const a=selected;selected=null;[grid[a.r][a.c],grid[r][c]]=[grid[r][c],grid[a.r][a.c]];if(!matches().size){render();await sleep(120);[grid[a.r][a.c],grid[r][c]]=[grid[r][c],grid[a.r][a.c]];render();statusEl.textContent='این جابه‌جایی ترکیب نساخت؛ حرکت دیگری امتحان کن.';return}moves--;busy=true;await resolve();busy=false;render();statusEl.textContent=moves===0?`پایان بازی! امتیازت ${score} شد. «شروع دوباره» را بزن.`:'خوب بود! ترکیب بعدی را بساز.'}
+async function resolve(){let combo=0;while(true){const m=matches();if(!m.size)break;combo++;score+=m.size*10*combo;const buttons=[...boardEl.children];for(const i of m)buttons[i]?.classList.add('matched');await sleep(180);for(const i of m)grid[Math.floor(i/N)][i%N]=-1;for(let c=0;c<N;c++){let vals=[];for(let r=N-1;r>=0;r--)if(grid[r][c]!==-1)vals.push(grid[r][c]);while(vals.length<N)vals.push(rand());for(let r=N-1,k=0;r>=0;r--,k++)grid[r][c]=vals[k]}render();await sleep(100)}best=Math.max(best,score)}
+function findHint(){for(let r=0;r<N;r++)for(let c=0;c<N;c++)for(const[dr,dc]of[[0,1],[1,0]]){const rr=r+dr,cc=c+dc;if(rr>=N||cc>=N)continue;[grid[r][c],grid[rr][cc]]=[grid[rr][cc],grid[r][c]];const ok=matches().size>0;[grid[r][c],grid[rr][cc]]=[grid[rr][cc],grid[r][c]];if(ok)return[{r,c},{r:rr,c:cc}]}return null}
+document.getElementById('newGame').addEventListener('click',()=>{score=0;moves=30;selected=null;busy=false;makeGrid();render();statusEl.textContent='دور تازه شروع شد؛ سه چهره یا نشان یکسان بساز!'});document.getElementById('hint').addEventListener('click',()=>{if(busy||moves<=0)return;const h=findHint();if(!h){makeGrid();render();statusEl.textContent='صفحه دوباره چیده شد؛ حرکت بعدی را پیدا کن.';return}selected=h[0];render();boardEl.children[h[1].r*N+h[1].c].classList.add('selected');statusEl.textContent='یکی از این دو مهره را لمس کن، سپس مهره کناری را انتخاب کن.'});makeGrid();render();
+</script></body></html>
